@@ -91,7 +91,7 @@ console.table(oldest);
 
 // 7.- Sort the people alphabetically by last name
 
-const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig',
+const people = ['Beck, Morris', 'Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig',
     'Begin, Menachem', 'Belloc, Hilarie', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter',
     'Ben, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano',
     'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin',
@@ -99,19 +99,50 @@ const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick
     'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
 
 
-const orderedPeople = people.sort(function (lastOne, nextOne) {
-    // const parts = lastOne.split(', ');
-    // console.log(parts);
-    const [aLast, aFirst] = lastOne.split(', ');
-    const [bLast, bFirst] = nextOne.split(', ');
+// const orderedPeople = people.sort(function (lastOne, nextOne) {
+// const parts = lastOne.split(', ');
+// console.log(parts);
 
-    if (aLast > bLast) {
+// const [aLast, aFirst] = lastOne.split(', ');
+// const [bLast, bFirst] = nextOne.split(', ');
+
+// if (aLast > bLast) {
+//     return 1;
+// }
+
+// else if (aLast < bLast){
+//     return -1;
+// }
+
+// else{
+
+// }
+// });
+// Hacer el orden en función del nombre y del apellido
+const orderedPeople = people.sort(function (personA, personB) {
+    const personALastName = personA.split(', ')[0];
+    const personBLastName = personB.split(', ')[0];
+
+    if (personALastName > personBLastName) {
         return 1;
+
+    } else if (personALastName < personBLastName) {
+        return -1;
+
+    } else {
+        const personAFirstName = personA.split(', ')[1];
+        const personBFirstName = personB.split(', ')[1];
+
+        if (personAFirstName > personBFirstName) {
+            return 1;
+
+        } else if (personAFirstName < personBFirstName) {
+            return -1;
+        }
     }
 
-    else {
-        return -1;
-    }
+
+
 
 });
 console.log(orderedPeople);
